@@ -9,7 +9,7 @@ import PhotoWatch from "./Components/PhotoWatch";
 
 
 function App() {
-  const [data, setData] = useState({ hits: [] });
+  const [data, setData] = useState( [] );
   const [query, setQuery] = useState("react");
 
   const [photo, setPhoto] = useState([]);
@@ -17,12 +17,15 @@ function App() {
     const fetchData = () => {
     axios
     .get("https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY")
-
-    .then (result => setPhoto(result.data));
-  };
+     
+.then (result => {
+      console.log(result)
+      setPhoto(result.data)
+  })
   
-  fetchData();
-}, );
+  .catch(error => console.log('There is an error:', error))
+}})
+
 
   return (
     <div className="App">
